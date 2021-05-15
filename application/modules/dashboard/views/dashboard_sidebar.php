@@ -41,6 +41,7 @@
             switch ($this->uri->segment(1)) {
                 case 'auth':
                 case 't00_sekolah':
+                case 't01_csiswa':
                     echo 'active menu-open';
                     break;
                 default:
@@ -56,6 +57,7 @@
             </a>
             <ul class="treeview-menu">
                 <li <?php echo $this->uri->segment(1) == 't00_sekolah' ? 'class="active"' : '' ?>><a href="<?php echo site_url() ?>t00_sekolah"><i class="fa fa-circle-o"></i> Sekolah</a></li>
+                <li <?php echo $this->uri->segment(1) == 't01_csiswa' ? 'class="active"' : '' ?>><a href="<?php echo site_url() ?>t01_csiswa"><i class="fa fa-circle-o"></i> Calon Siswa</a></li>
                 <li <?php echo $this->uri->segment(1) == 'auth' ? 'class="active"' : '' ?>><a href="<?php echo site_url() ?>auth"><i class="fa fa-circle-o"></i> Users</a></li>
                 <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li> -->
                 <!-- <li class="treeview">
