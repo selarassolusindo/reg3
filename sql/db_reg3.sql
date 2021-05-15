@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 16, 2021 at 02:45 AM
+-- Generation Time: May 16, 2021 at 03:22 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_reg2`
+-- Database: `db_reg3`
 --
 
 -- --------------------------------------------------------
@@ -54,8 +54,9 @@ CREATE TABLE `t90_users` (
 --
 
 INSERT INTO `t90_users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$3ZVLZq3/oiedrGwi/1S9X.ViCmPo4X9dQPfsH2i8Zto5FFCdiU.rG', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1621107884, 1, 'Admin', NULL, NULL, NULL),
-(2, '::1', NULL, '$2y$10$L7IcqDV52AUipywPcc1YJetQLUkaK3L9Ql8ad.Wqh3yjCGgZ1BdRm', 'adi@adi.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1621106195, 1621107445, 1, 'Adi', NULL, NULL, NULL);
+(1, '127.0.0.1', 'administrator', '$2y$12$3ZVLZq3/oiedrGwi/1S9X.ViCmPo4X9dQPfsH2i8Zto5FFCdiU.rG', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1621110088, 1, 'Admin', NULL, NULL, NULL),
+(2, '::1', NULL, '$2y$10$L7IcqDV52AUipywPcc1YJetQLUkaK3L9Ql8ad.Wqh3yjCGgZ1BdRm', 'adi@adi.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1621106195, 1621107445, 1, 'Adi', NULL, NULL, NULL),
+(3, '::1', NULL, '$2y$10$FqgcRTGS2sSX4TiT7xSn6ub2XIMXw4Z/3yVBV9LHTdgoYLEGVRhda', 'ida@ida.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1621110117, NULL, 1, 'Ida', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -96,7 +97,8 @@ CREATE TABLE `t92_users_groups` (
 INSERT INTO `t92_users_groups` (`id`, `user_id`, `group_id`) VALUES
 (5, 1, 1),
 (6, 1, 2),
-(10, 2, 2);
+(10, 2, 2),
+(11, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -154,7 +156,7 @@ ALTER TABLE `t93_login_attempts`
 -- AUTO_INCREMENT for table `t90_users`
 --
 ALTER TABLE `t90_users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `t91_groups`
@@ -166,7 +168,7 @@ ALTER TABLE `t91_groups`
 -- AUTO_INCREMENT for table `t92_users_groups`
 --
 ALTER TABLE `t92_users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `t93_login_attempts`

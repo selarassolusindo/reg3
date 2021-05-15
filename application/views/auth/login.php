@@ -30,7 +30,7 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="../../index2.html"><b>Admin</b>LTE</a>
+                <a href="<?php echo site_url() ?>"><b><?php echo SITE_NAME ?></b></a>
             </div>
             <!-- /.login-logo -->
 
