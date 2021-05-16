@@ -59,7 +59,7 @@
         <script src="<?php echo base_url() ?>assets/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
     </head>
 
-    <body class="hold-transition skin-green-light fixed sidebar-mini">
+    <body class="hold-transition skin-black-light fixed sidebar-mini">
 
         <div class="wrapper">
 
