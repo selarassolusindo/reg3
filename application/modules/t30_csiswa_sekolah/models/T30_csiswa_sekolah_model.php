@@ -31,21 +31,36 @@ class T30_csiswa_sekolah_model extends CI_Model
 
     // get total rows
     function total_rows($q = NULL) {
-        $this->db->like('idcsiswasekolah', $q);
-		$this->db->or_like('idcsiswa', $q);
-		$this->db->or_like('idsekolah', $q);
-		$this->db->from($this->table);
+        $this->db->like('csiswa.Nama', $q);
+        $this->db->or_like('csiswa.Nama', $q);
+		$this->db->or_like('sekolah.Nama', $q);
+        $this->db->or_like('sekolah.Alamat', $q);
+        $this->db
+            ->select($this->table . '.*')
+            ->select("concat(csiswa.Nama, ', ', csiswa.Alamat) as csiswaNamaAlamat")
+            ->select("concat(sekolah.Nama, ', ', sekolah.Alamat) as sekolahNamaAlamat")
+            ->from($this->table)
+            ->join('t01_csiswa csiswa', 'csiswa.idcsiswa = ' . $this->table . '.idcsiswa', 'left')
+            ->join('t00_sekolah sekolah', 'sekolah.idsekolah = ' . $this->table . '.idsekolah', 'left');
         return $this->db->count_all_results();
     }
 
     // get data with limit and search
     function get_limit_data($limit, $start = 0, $q = NULL) {
         $this->db->order_by($this->id, $this->order);
-        $this->db->like('idcsiswasekolah', $q);
-		$this->db->or_like('idcsiswa', $q);
-		$this->db->or_like('idsekolah', $q);
+        $this->db->like('csiswa.Nama', $q);
+        $this->db->or_like('csiswa.Nama', $q);
+		$this->db->or_like('sekolah.Nama', $q);
+        $this->db->or_like('sekolah.Alamat', $q);
 		$this->db->limit($limit, $start);
-        return $this->db->get($this->table)->result();
+        $this->db
+            ->select($this->table . '.*')
+            ->select("concat(csiswa.Nama, ', ', csiswa.Alamat) as csiswaNamaAlamat")
+            ->select("concat(sekolah.Nama, ', ', sekolah.Alamat) as sekolahNamaAlamat")
+            ->from($this->table)
+            ->join('t01_csiswa csiswa', 'csiswa.idcsiswa = ' . $this->table . '.idcsiswa', 'left')
+            ->join('t00_sekolah sekolah', 'sekolah.idsekolah = ' . $this->table . '.idsekolah', 'left');
+        return $this->db->get()->result();
     }
 
     // insert data
@@ -59,7 +74,7 @@ class T30_csiswa_sekolah_model extends CI_Model
         if (
             $this->db
             ->limit(1)
-            ->get_where($this->table, "idcsiswa = '" . $data['idcsiswa'] . "' and idsekolah = '" . $data['idsekolah'] . "'")
+            ->get_where($this->table, "idcsiswa = '" . $data['idcsiswa'] . "'")
             ->num_rows() === 0
         ) {
             $this->db->insert($this->table, $data);

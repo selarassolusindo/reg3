@@ -44,15 +44,17 @@
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
                 <th class="text-right">NO.</th>
-				<th>IDCSISWA</th>
-				<th>IDSEKOLAH</th>
+				<th>CALON SISWA</th>
+				<th>SEKOLAH</th>
 				<th class="text-center">PROSES</th>
             </tr>
 			<?php foreach ($t30_csiswa_sekolah_data as $t30_csiswa_sekolah) { ?>
             <tr>
 				<td width="80px" class="text-right"><?php echo ++$start ?></td>
-				<td><?php echo $t30_csiswa_sekolah->idcsiswa ?></td>
-				<td><?php echo $t30_csiswa_sekolah->idsekolah ?></td>
+				<!-- <td><?php echo $t30_csiswa_sekolah->idcsiswa ?></td> -->
+                <td><?php echo $t30_csiswa_sekolah->csiswaNamaAlamat ?></td>
+				<!-- <td><?php echo $t30_csiswa_sekolah->idsekolah ?></td> -->
+                <td><?php echo $t30_csiswa_sekolah->sekolahNamaAlamat ?></td>
 				<td style="text-align:center" width="200px">
 				<?php
 				//echo anchor(site_url('t30_csiswa_sekolah/read/'.$t30_csiswa_sekolah->idcsiswasekolah),'Read');

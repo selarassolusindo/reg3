@@ -11,6 +11,8 @@ class T30_csiswa_sekolah extends CI_Controller
         parent::__construct();
         $this->load->model('T30_csiswa_sekolah_model');
         $this->load->library('form_validation');
+        $this->load->model('t01_csiswa/T01_csiswa_model');
+        $this->load->model('t00_sekolah/T00_sekolah_model');
     }
 
     public function index()
@@ -68,12 +70,24 @@ class T30_csiswa_sekolah extends CI_Controller
 
     public function create()
     {
+        /**
+         * ambil data calon siswa
+         */
+        $dataCsiswa = $this->T01_csiswa_model->get_all();
+
+        /**
+         * ambil data sekolah
+         */
+        $dataSekolah = $this->T00_sekolah_model->get_all();
+
         $data = array(
             'button' => 'Simpan',
             'action' => site_url('t30_csiswa_sekolah/create_action'),
 			'idcsiswasekolah' => set_value('idcsiswasekolah'),
 			'idcsiswa' => set_value('idcsiswa'),
 			'idsekolah' => set_value('idsekolah'),
+            'dataCsiswa' => $dataCsiswa,
+            'dataSekolah' => $dataSekolah,
 		);
         // $this->load->view('t30_csiswa_sekolah/t30_csiswa_sekolah_form', $data);
         $data['content'] = 't30_csiswa_sekolah/t30_csiswa_sekolah_form';
@@ -98,7 +112,7 @@ class T30_csiswa_sekolah extends CI_Controller
             // $this->T30_csiswa_sekolah_model->insert($data);
             $last_id = $this->T30_csiswa_sekolah_model->insert($data); //echo pre($last_id == FALSE); exit;
             if ($last_id == FALSE) {
-                $this->session->set_flashdata('message', 'Data Sudah Ada !');
+                $this->session->set_flashdata('message', 'Calon Siswa sudah terdaftar !');
                 $this->create();
             } else {
                 $this->session->set_flashdata('message', 'Create Record Success');
@@ -165,7 +179,8 @@ class T30_csiswa_sekolah extends CI_Controller
 
     public function _rules()
     {
-		$this->form_validation->set_rules('idcsiswa', 'idcsiswa', 'trim|required');
+		// $this->form_validation->set_rules('idcsiswa', 'idcsiswa', 'trim|required|is_unique[t30_csiswa_sekolah.idcsiswa]');
+        $this->form_validation->set_rules('idcsiswa', 'idcsiswa', 'trim|required');
 		$this->form_validation->set_rules('idsekolah', 'idsekolah', 'trim|required');
 		$this->form_validation->set_rules('idcsiswasekolah', 'idcsiswasekolah', 'trim');
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
