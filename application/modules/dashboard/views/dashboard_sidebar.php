@@ -86,6 +86,30 @@
         </li>
         <!-- /setup -->
 
+        <!-- aktivitas -->
+        <li class="treeview
+            <?php
+            switch ($this->uri->segment(1)) {
+                case 't30_csiswa_sekolah':
+                    echo 'active menu-open';
+                    break;
+                default:
+                    echo '';
+            }
+            ?>
+        ">
+            <a href="#">
+                <i class="fa fa-circle"></i> <span>Aktivitas</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li <?php echo $this->uri->segment(1) == 't30_csiswa_sekolah' ? 'class="active"' : '' ?>><a href="<?php echo site_url() ?>t30_csiswa_sekolah"><i class="fa fa-circle-o"></i> Pendaftaran</a></li>
+            </ul>
+        </li>
+        <!-- /aktivitas -->
+
         <!-- utility -->
         <li class="treeview
             <?php
@@ -106,29 +130,6 @@
             </a>
             <ul class="treeview-menu">
                 <li <?php echo $this->uri->segment(1) == 'change_password' ? 'class="active"' : '' ?>><a href="<?php echo site_url() ?>change_password"><i class="fa fa-circle-o"></i> Change Password</a></li>
-                <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li> -->
-                <!-- <li class="treeview">
-                    <a href="#"><i class="fa fa-circle-o"></i> Level One
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                        <li class="treeview">
-                            <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li> -->
-                <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li> -->
             </ul>
         </li>
         <!-- /utility -->
