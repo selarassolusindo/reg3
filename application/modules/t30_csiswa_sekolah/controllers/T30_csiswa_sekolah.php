@@ -45,7 +45,7 @@ class T30_csiswa_sekolah extends CI_Controller
         );
         // $this->load->view('t30_csiswa_sekolah/t30_csiswa_sekolah_list', $data);
         $data['content'] = 't30_csiswa_sekolah/t30_csiswa_sekolah_list';
-        $data['caption'] = 'Pendaftaran';
+        $data['caption'] = 'Daftar Data Pendaftaran';
         $data['header'] = 'dashboard_header';
         $data['sidebar'] = 'dashboard_sidebar';
         $data['control_sidebar'] = 'dashboard_control_sidebar';
@@ -73,7 +73,7 @@ class T30_csiswa_sekolah extends CI_Controller
         /**
          * ambil data calon siswa
          */
-        $dataCsiswa = $this->T01_csiswa_model->get_all();
+        $dataCsiswa = $this->T01_csiswa_model->get_all_not_registered();
 
         /**
          * ambil data sekolah
@@ -91,7 +91,7 @@ class T30_csiswa_sekolah extends CI_Controller
 		);
         // $this->load->view('t30_csiswa_sekolah/t30_csiswa_sekolah_form', $data);
         $data['content'] = 't30_csiswa_sekolah/t30_csiswa_sekolah_form';
-        $data['caption'] = 'Pendaftaran';
+        $data['caption'] = 'Pendaftaran - Tambah Data';
         $data['header'] = 'dashboard_header';
         $data['sidebar'] = 'dashboard_sidebar';
         $data['control_sidebar'] = 'dashboard_control_sidebar';
@@ -126,16 +126,28 @@ class T30_csiswa_sekolah extends CI_Controller
         $row = $this->T30_csiswa_sekolah_model->get_by_id($id);
 
         if ($row) {
+            /**
+             * ambil data calon siswa
+             */
+            $dataCsiswa = $this->T01_csiswa_model->get_all();
+
+            /**
+             * ambil data sekolah
+             */
+            $dataSekolah = $this->T00_sekolah_model->get_all();
+
             $data = array(
                 'button' => 'Simpan',
                 'action' => site_url('t30_csiswa_sekolah/update_action'),
 				'idcsiswasekolah' => set_value('idcsiswasekolah', $row->idcsiswasekolah),
 				'idcsiswa' => set_value('idcsiswa', $row->idcsiswa),
 				'idsekolah' => set_value('idsekolah', $row->idsekolah),
+                'dataCsiswa' => $dataCsiswa,
+                'dataSekolah' => $dataSekolah,
 			);
             // $this->load->view('t30_csiswa_sekolah/t30_csiswa_sekolah_form', $data);
             $data['content'] = 't30_csiswa_sekolah/t30_csiswa_sekolah_form';
-            $data['caption'] = 'Pendaftaran';
+            $data['caption'] = 'Pendaftaran - Ubah Data';
             $data['header'] = 'dashboard_header';
             $data['sidebar'] = 'dashboard_sidebar';
             $data['control_sidebar'] = 'dashboard_control_sidebar';

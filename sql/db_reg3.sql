@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 16, 2021 at 03:22 AM
+-- Generation Time: May 17, 2021 at 05:25 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -20,6 +20,67 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_reg3`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t00_sekolah`
+--
+
+CREATE TABLE `t00_sekolah` (
+  `idsekolah` int(11) NOT NULL,
+  `Nama` varchar(50) NOT NULL,
+  `Alamat` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `t00_sekolah`
+--
+
+INSERT INTO `t00_sekolah` (`idsekolah`, `Nama`, `Alamat`) VALUES
+(1, 'MINU KARAKTER', 'Jl. Gajah Mada, Bojonegoro'),
+(2, 'MINU UNGGULAN', 'Jl. Gajah Mada, Bojonegoro');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t01_csiswa`
+--
+
+CREATE TABLE `t01_csiswa` (
+  `idcsiswa` int(11) NOT NULL,
+  `Nama` varchar(25) NOT NULL,
+  `Alamat` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `t01_csiswa`
+--
+
+INSERT INTO `t01_csiswa` (`idcsiswa`, `Nama`, `Alamat`) VALUES
+(1, 'Abdullah', 'Ledok Wetan'),
+(2, 'Abdullah', 'Jambean'),
+(3, 'Abdullah', 'Ledok Kulon');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t30_csiswa_sekolah`
+--
+
+CREATE TABLE `t30_csiswa_sekolah` (
+  `idcsiswasekolah` int(11) NOT NULL,
+  `idcsiswa` int(11) NOT NULL,
+  `idsekolah` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `t30_csiswa_sekolah`
+--
+
+INSERT INTO `t30_csiswa_sekolah` (`idcsiswasekolah`, `idcsiswa`, `idsekolah`) VALUES
+(1, 1, 1),
+(3, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -56,7 +117,7 @@ CREATE TABLE `t90_users` (
 INSERT INTO `t90_users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
 (1, '127.0.0.1', 'administrator', '$2y$12$3ZVLZq3/oiedrGwi/1S9X.ViCmPo4X9dQPfsH2i8Zto5FFCdiU.rG', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1621110088, 1, 'Admin', NULL, NULL, NULL),
 (2, '::1', NULL, '$2y$10$L7IcqDV52AUipywPcc1YJetQLUkaK3L9Ql8ad.Wqh3yjCGgZ1BdRm', 'adi@adi.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1621106195, 1621107445, 1, 'Adi', NULL, NULL, NULL),
-(3, '::1', NULL, '$2y$10$FqgcRTGS2sSX4TiT7xSn6ub2XIMXw4Z/3yVBV9LHTdgoYLEGVRhda', 'ida@ida.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1621110117, NULL, 1, 'Ida', NULL, NULL, NULL);
+(3, '::1', NULL, '$2y$10$FqgcRTGS2sSX4TiT7xSn6ub2XIMXw4Z/3yVBV9LHTdgoYLEGVRhda', 'ida@ida.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1621110117, 1621177786, 1, 'Ida', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -118,6 +179,27 @@ CREATE TABLE `t93_login_attempts` (
 --
 
 --
+-- Indexes for table `t00_sekolah`
+--
+ALTER TABLE `t00_sekolah`
+  ADD PRIMARY KEY (`idsekolah`),
+  ADD UNIQUE KEY `nama_alamat` (`Nama`,`Alamat`) USING HASH;
+
+--
+-- Indexes for table `t01_csiswa`
+--
+ALTER TABLE `t01_csiswa`
+  ADD PRIMARY KEY (`idcsiswa`),
+  ADD UNIQUE KEY `nama_alamat` (`Nama`,`Alamat`) USING HASH;
+
+--
+-- Indexes for table `t30_csiswa_sekolah`
+--
+ALTER TABLE `t30_csiswa_sekolah`
+  ADD PRIMARY KEY (`idcsiswasekolah`),
+  ADD UNIQUE KEY `idcsiswa` (`idcsiswa`);
+
+--
 -- Indexes for table `t90_users`
 --
 ALTER TABLE `t90_users`
@@ -151,6 +233,24 @@ ALTER TABLE `t93_login_attempts`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `t00_sekolah`
+--
+ALTER TABLE `t00_sekolah`
+  MODIFY `idsekolah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `t01_csiswa`
+--
+ALTER TABLE `t01_csiswa`
+  MODIFY `idcsiswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `t30_csiswa_sekolah`
+--
+ALTER TABLE `t30_csiswa_sekolah`
+  MODIFY `idcsiswasekolah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `t90_users`

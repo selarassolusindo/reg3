@@ -21,12 +21,24 @@
 
         <form action="<?php echo $action; ?>" method="post">
 			<div class="form-group">
-            	<label for="int">IDCSISWA <?php echo form_error('idcsiswa') ?></label>
-            	<input type="text" class="form-control" name="idcsiswa" id="idcsiswa" placeholder="IDCSISWA" value="<?php echo $idcsiswa; ?>" />
+            	<label for="int">CALON SISWA <?php echo form_error('idcsiswa') ?></label>
+            	<!-- <input type="text" class="form-control" name="idcsiswa" id="idcsiswa" placeholder="IDCSISWA" value="<?php echo $idcsiswa; ?>" /> -->
+                <select class="form-control" name="idcsiswa" <?php echo $this->uri->segment(2) == 'update' ? 'disabled' : '' ?>>
+                    <option value=""></option>
+                    <?php foreach($dataCsiswa as $d) { ?>
+                    <option value="<?php echo $d->idcsiswa ?>" <?php echo $d->idcsiswa == $idcsiswa ? "selected" : "" ?>><?php echo $d->Nama . ', ' . $d->Alamat ?></option>
+                    <?php } ?>
+                </select>
         	</div>
 			<div class="form-group">
-            	<label for="int">IDSEKOLAH <?php echo form_error('idsekolah') ?></label>
-            	<input type="text" class="form-control" name="idsekolah" id="idsekolah" placeholder="IDSEKOLAH" value="<?php echo $idsekolah; ?>" />
+            	<label for="int">SEKOLAH <?php echo form_error('idsekolah') ?></label>
+            	<!-- <input type="text" class="form-control" name="idsekolah" id="idsekolah" placeholder="IDSEKOLAH" value="<?php echo $idsekolah; ?>" /> -->
+                <select class="form-control" name="idsekolah">
+                    <option value=""></option>
+                    <?php foreach($dataSekolah as $d) { ?>
+                    <option value="<?php echo $d->idsekolah ?>" <?php echo $d->idsekolah == $idsekolah ? "selected" : "" ?>><?php echo $d->Nama . ', ' . $d->Alamat ?></option>
+                    <?php } ?>
+                </select>
         	</div>
 			<input type="hidden" name="idcsiswasekolah" value="<?php echo $idcsiswasekolah; ?>" />
 			<button type="submit" class="btn btn-primary"><?php echo $button ?></button>

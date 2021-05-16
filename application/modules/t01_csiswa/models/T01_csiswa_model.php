@@ -68,6 +68,17 @@ class T01_csiswa_model extends CI_Model
         $this->db->delete($this->table);
     }
 
+    // get all not registered
+    function get_all_not_registered()
+    {
+        // $this->db->order_by($this->id, $this->order);
+        // $this->db->where_not_in($this->id, 'select idcsiswa from t30_csiswa_sekolah');
+        // return $this->db->get($this->table)->result();
+        $q = "select * from " . $this->table . " where idcsiswa not in (select idcsiswa from t30_csiswa_sekolah)
+            order by idcsiswa asc";
+        return $this->db->query($q)->result();
+    }
+
 }
 
 /* End of file T01_csiswa_model.php */

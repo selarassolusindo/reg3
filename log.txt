@@ -1,0 +1,15 @@
+skenario
+- aplikasi bisa dijalankan secara online di semua sekolah
+- wali calon siswa mendatangi sekolah
+- wali calon siswa melakukan pendaftaran
+- petugas sekolah menanyakan nama dan alamat calon siswa kepada wali calon siswa
+- petugas sekolah melakukan pengecekan nama dan alamat calon siswa di aplikasi
+- apabila data calon siswa sudah terdaftar pada salah satu sekolah maka pendaftaran tidak dapat dilakukan
+- apabila data calon siswa belum terdaftar pada salah satu sekolah maka pendaftaran dapat dilakukan
+
+
+to-do
+- cetak bukti pendaftaran
+- laporan calon siswa yang sudah terdaftar, grouping list per sekolah
+- buat menu check calon siswa berdasarkan nama dan alamat
+-
