@@ -32,7 +32,7 @@ class T30_csiswa_sekolah_model extends CI_Model
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('csiswa.Nama', $q);
-        $this->db->or_like('csiswa.Nama', $q);
+        $this->db->or_like('csiswa.Alamat', $q);
 		$this->db->or_like('sekolah.Nama', $q);
         $this->db->or_like('sekolah.Alamat', $q);
         $this->db
@@ -49,7 +49,7 @@ class T30_csiswa_sekolah_model extends CI_Model
     function get_limit_data($limit, $start = 0, $q = NULL) {
         $this->db->order_by($this->id, $this->order);
         $this->db->like('csiswa.Nama', $q);
-        $this->db->or_like('csiswa.Nama', $q);
+        $this->db->or_like('csiswa.Alamat', $q);
 		$this->db->or_like('sekolah.Nama', $q);
         $this->db->or_like('sekolah.Alamat', $q);
 		$this->db->limit($limit, $start);
