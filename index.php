@@ -60,7 +60,7 @@
 			define('DBPREFIX', 'db');
 			break;
 
-		case "reg.selusin.online":
+		case "reg3.selusin.online":
 		case "selusin.online":
 			$env = "production";
 			define('DBPREFIX', 'u473805576');
