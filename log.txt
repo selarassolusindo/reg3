@@ -12,4 +12,4 @@ to-do
 - cetak bukti pendaftaran
 - laporan calon siswa yang sudah terdaftar, grouping list per sekolah
 - buat menu check calon siswa berdasarkan nama dan alamat
--
+- info dari mas ridwan, untuk pengecekan data dapat menggunakan NIK
